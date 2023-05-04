@@ -149,7 +149,7 @@ footer a{
   flex-wrap: wrap;
   margin: 50px auto;
   padding-top:50px;
-  background-color: black;
+  /* background-color: grey; */
   border-radius: 20px;
 }
 .home-container a{
@@ -379,32 +379,43 @@ footer a{
 }
 .detail-comment{
   margin:30px 0;
+  border:5px dotted #10abff80;
+  border-radius: 15px;
 }
 .detail-comment .title{
   margin:0 auto;
-  padding:10px;;
-  background-color: #10abff;
+  padding:10px;
 }
 .detail-comment .content{
   text-transform: capitalize;
-  background-color: rgb(208, 233, 254);
+  padding-top:10px;
+  border-top:5px dotted #10abff80;
 }
 .detail-comment textarea{
-  margin-top:30px;
+  margin-top:10px;
   width:80%;
   height: 12vh;
+  border-radius: 15px;
+  border:5px solid #65c9ff;
+}
+.detail-individual{
+  border-radius:10px;
+  border:2px solid #10abff;
+  background-color: #bbe7ff;
 }
 .detail-comment input{
   padding:5px;
-  background-color: #10abff80;
   font-size: 1rem;
   font-weight: 500;
   margin-bottom:10px;
-  border:transparent;
+  border:3px solid deepskyblue;
+  background-color:#10abff;
+  color:white;
+  border-radius: 5px;
 }
 .detail-comment input:hover{
-  background-color: white;
   color:#10abff;
+  background-color: white;
   cursor:pointer;
   font-weight: 600;
 }

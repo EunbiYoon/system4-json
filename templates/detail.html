@@ -66,9 +66,11 @@
                 <p>No comments yet!</p>
             {% endif %}
             {% for comment in post_detail.comment_model.all %}
-                <br/><strong>{{comment.commenter_name}}</strong> <small>{{comment.date_added|date:"m.d h:i" }}</small>
-                <br/>{{comment.comment_body}}
-                <br/>
+                <div class="detail-individual">
+                    <strong>{{comment.commenter_name}}</strong><small>{{comment.date_added|date:"m.d h:i" }}</small>
+                    <br/>{{comment.comment_body}}
+                </div>    
+                    <br/>
             {% endfor %}
             {% if user.is_authenticated %}
                 <form method="post" action="{% url 'detail_url' post_detail.slug post_detail.id %}">
