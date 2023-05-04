@@ -13,11 +13,11 @@ def homeView(request):
     return render(request, 'home.html', context)
 
 def detailView(request, slug, pk):
-    labels=[23.01, 23.02, 23.042, 23.043, 23.044]
     json_path=settings.STATICFILES_DIRS[0]+'/json/data.json'
     with open(json_path,'r') as f:
         data=json.load(f)
     value_data=data["values"]
+    label_data=data["labels"]
 
     post = Post.objects.get(slug=slug, pk=pk)
     new_comment=None
@@ -37,7 +37,7 @@ def detailView(request, slug, pk):
         'post_detail':post,
         'new_comment': new_comment,
         'form_detail':comment_form,
-        'labels':labels,
+        'labels':json.dumps(label_data),
         'data':json.dumps(value_data)
     }
     return render(request, 'detail.html', context)
