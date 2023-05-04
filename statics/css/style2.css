@@ -118,6 +118,14 @@ footer a{
   font-weight: 1000;
   background-color:#10abff;
 }
+.home-history a{
+  text-decoration:none;
+  font-weight: 800;
+  padding:10px 0;
+}
+.home-history a:hover{
+  background-color: #10abff;
+}
 .home-history .category{
   font-size:1.2rem;
   font-weight: 800;
@@ -125,20 +133,10 @@ footer a{
 .home-history .title{
   font-size: 1.1rem;
 } 
-.home-history time{
+.home-history .time{
   font-size:0.8rem;
 }
-.home-history article{
-  padding:10px 0;
-}
-.home-history .review a{
-  text-decoration:none;
-  font-weight: 800;
-}
-.home-history .review a:hover{
-  text-decoration:none;
-  color:deeppink
-}
+
 
 .home-container{
   width: 950px;

@@ -8,13 +8,13 @@
     <div class="home-history">
         <div class="name">Recent Report</div>
         {% for post in posts_set %}
-            <article>
+            <a href="{% url 'detail_url' post.slug post.id%}">
                 <div class="category">{{ post.category }}</div>
                 <div class="title">{{ post.title }}</div>
-                <div class="time"><time>{{ post.date_added|date:"d M, y h:i" }}</time>
+                <div class="time">{{ post.date_added|date:"d M, y h:i" }}</div>
                 <div class="intro">{{ post.intro }}</div>
-                <div class="review"><a href="{% url 'detail_url' post.slug post.id%}">Detail Review</a></div>
-            </article>
+                <div class="review">Detail Review</div>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}
