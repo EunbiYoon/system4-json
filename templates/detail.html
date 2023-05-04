@@ -67,10 +67,11 @@
             {% endif %}
             {% for comment in post_detail.comment_model.all %}
                 <div class="detail-individual">
-                    <strong>{{comment.commenter_name}}</strong><small>{{comment.date_added|date:"m.d h:i" }}</small>
-                    <br/>{{comment.comment_body}}
+                    <div class="right">{{comment.commenter_name}}</div>
+                    <div class="left">{{comment.date_added|date:"m.d h:i" }}</div>
+                    <div class="bottom">{{comment.comment_body}}</div>
                 </div>    
-                    <br/>
+                <div class="detail-individual-space"><small>e</small></div>
             {% endfor %}
             {% if user.is_authenticated %}
                 <form method="post" action="{% url 'detail_url' post_detail.slug post_detail.id %}">
