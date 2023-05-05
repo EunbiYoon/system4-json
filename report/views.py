@@ -12,14 +12,24 @@ def homeView(request):
     }
     return render(request, 'home.html', context)
 
+def post_titles(request):
+    titles=Post.objects.values_list('title', flat=True)
+    return render(request,titles)
+
 def detailView(request, slug, pk):
+    #get the specific posts
+    post = Post.objects.get(slug=slug, pk=pk)
+
+    #get json data
+    week_num=post.title
     json_path=settings.STATICFILES_DIRS[0]+'/json/data.json'
     with open(json_path,'r') as f:
         data=json.load(f)
-    value_data=data["values"]
-    label_data=data["labels"]
+    selected_data=data[week_num]
+    value_data=selected_data["values"]
+    label_data=selected_data["labels"]
 
-    post = Post.objects.get(slug=slug, pk=pk)
+    #comment function
     new_comment=None
     if request.method == 'POST':
         comment_form = CommentForm(request.POST, instance=post)

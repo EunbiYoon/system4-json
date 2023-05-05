@@ -8,7 +8,7 @@
     <div class="home-history">
         <div class="name">Recent Report</div>
         {% for post in posts_set %}
-            <a href="{% url 'detail_url' post.slug post.id%}">
+            <a href="{% url 'detail_url' post.slug post.id %}">
                 <div class="category">{{ post.category }}</div>
                 <div class="title">{{ post.title }}</div>
                 <div class="time">{{ post.date_added|date:"d M, y h:i" }}</div>
