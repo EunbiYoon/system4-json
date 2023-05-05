@@ -20,15 +20,32 @@ def detailView(request, slug, pk):
     #get the specific posts
     post = Post.objects.get(slug=slug, pk=pk)
 
-    #get json data
+    #get graph json data
     week_num=post.title
-    json_path=settings.STATICFILES_DIRS[0]+'/json/data.json'
-    with open(json_path,'r') as f:
+    graph_json_path=settings.STATICFILES_DIRS[0]+'/json/graph.json'
+    with open(graph_json_path,'r') as f:
         data=json.load(f)
-    selected_data=data[week_num]
-    value_data=selected_data["values"]
-    label_data=selected_data["labels"]
+    selected_graph=data[week_num]
+    graph_label=selected_graph["labels"]
+    graph_value=selected_graph["values"]
 
+    # #get table json data
+    # table_json_path=settings.STATICFILES_DIRS[0]+'/json/table.json'
+    # with open(table_json_path,'r') as f:
+    #     data=json.load(f)
+    # selected_table=data[week_num]
+    my_columns=["column1","column2","column3"]
+    my_rows=["row1","row2"]
+    my_values=[
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+    ]
+    my_dict={
+        'columns':my_columns,
+        'rows':my_rows,
+        'values':my_values
+    }
     #comment function
     new_comment=None
     if request.method == 'POST':
@@ -47,8 +64,11 @@ def detailView(request, slug, pk):
         'post_detail':post,
         'new_comment': new_comment,
         'form_detail':comment_form,
-        'labels':json.dumps(label_data),
-        'data':json.dumps(value_data)
+        'detail_graph_label':json.dumps(graph_label),
+        'detail_graph_value':json.dumps(graph_value),
+        'json_data':json.dumps(my_dict),
+        'my_row':my_rows,
+        'my_column':my_columns
     }
     return render(request, 'detail.html', context)
 

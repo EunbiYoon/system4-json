@@ -26,10 +26,12 @@
 {% block container %}
     {% load static %}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- graph -->
     <div class="detail-graph"><canvas id="chart"></canvas></div>
     <script>
-        var chartData=JSON.parse('{{data|safe}}');
-        var chartLabels=JSON.parse('{{ labels|safe }}');
+        var chartData=JSON.parse('{{detail_graph_value|safe}}');
+        var chartLabels=JSON.parse('{{ detail_graph_label|safe }}');
         var chartConfig={
             type:'line',
             data:{
@@ -52,6 +54,37 @@
         };
         var chart=new Chart(document.getElementById('chart'), chartConfig);
     </script>
+
+     <!-- table -->
+     <table id="table_id" class="display">
+        <thead>
+            <tr>
+                <th></th>
+                {% for row in my_row%}
+                <th>{{ row }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for column in my_column%}
+                <tr>
+                    {% for row in my_row%}
+                        <td>{{ column }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document)
+        .ready(function () {
+            $('#table_id').DataTable();
+        });
+    </script>
+
+    
 {% endblock %}
 
 {% block navigator %}
