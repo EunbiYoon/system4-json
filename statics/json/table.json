@@ -1,22 +1,7 @@
 {
-    "April 4th Week":[
-    {
-        "index":1,
-        "Name":"John",
-        "Age":30,
-        "Country":"USA"
-    },
-    {
-        "index":2,
-        "Name":"John",
-        "Age":30,
-        "Country":"USA"
-    },
-    {
-        "index":3,
-        "Name":"John",
-        "Age":30,
-        "Country":"USA"
+    "April 4th Week":{
+        "columns":["Name","Age","Country"],
+        "index":[1,2,3],
+        "values":[["John",30,"USA"],["John",30,"USA"],["John",30,"USA"],["John",30,"USA"]]
     }
-]
 }

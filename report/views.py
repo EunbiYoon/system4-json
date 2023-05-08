@@ -33,7 +33,18 @@ def detailView(request, slug, pk):
     table_json_path=settings.STATICFILES_DIRS[0]+'/json/table.json'
     with open(table_json_path,'r') as f:
         data=json.load(f)
-    json_table=data[week_num]
+    jj=data[week_num]
+    columns_data=jj["columns"]
+    index_data=jj["index"]
+    values_data=jj["values"]
+    json_data=[]
+    for i, index in enumerate(index_data):
+        row={"index":index}
+        for j,column in enumerate(columns_data):
+            row[column]=values_data[i][j]
+        json_data.append(row)
+
+
 
  
     #comment function
@@ -56,7 +67,7 @@ def detailView(request, slug, pk):
         'form_detail':comment_form,
         'detail_graph_label':json.dumps(graph_label),
         'detail_graph_value':json.dumps(graph_value),
-        'data':json_table
+        'data':json_data
     }
     return render(request, 'detail.html', context)
 
