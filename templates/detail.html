@@ -55,34 +55,27 @@
         var chart=new Chart(document.getElementById('chart'), chartConfig);
     </script>
 
-     <!-- table -->
-     <table id="table_id" class="display">
+    <!-- table -->
+    <table>
         <thead>
             <tr>
-                <th></th>
-                {% for row in my_row%}
-                <th>{{ row }}</th>
-                {% endfor %}
+                <th>Index</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Country</th>
             </tr>
         </thead>
         <tbody>
-            {% for column in my_column%}
-                <tr>
-                    {% for row in my_row%}
-                        <td>{{ column }}</td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-
+            {% for row in data %}
+            <tr>
+                <td>{{row.index}}</td>
+                <td>{{row.Name}}</td>
+                <td>{{row.Age}}</td>
+                <td>{{row.Country}}</td>
+            </tr>
+            {%endfor%}
         </tbody>
     </table>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document)
-        .ready(function () {
-            $('#table_id').DataTable();
-        });
-    </script>
 
     
 {% endblock %}

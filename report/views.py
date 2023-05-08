@@ -29,23 +29,13 @@ def detailView(request, slug, pk):
     graph_label=selected_graph["labels"]
     graph_value=selected_graph["values"]
 
-    # #get table json data
-    # table_json_path=settings.STATICFILES_DIRS[0]+'/json/table.json'
-    # with open(table_json_path,'r') as f:
-    #     data=json.load(f)
-    # selected_table=data[week_num]
-    my_columns=["column1","column2","column3"]
-    my_rows=["row1","row2"]
-    my_values=[
-        [1,2,3],
-        [4,5,6],
-        [7,8,9]
-    ]
-    my_dict={
-        'columns':my_columns,
-        'rows':my_rows,
-        'values':my_values
-    }
+    #get table json data
+    table_json_path=settings.STATICFILES_DIRS[0]+'/json/table.json'
+    with open(table_json_path,'r') as f:
+        data=json.load(f)
+    json_table=data[week_num]
+
+ 
     #comment function
     new_comment=None
     if request.method == 'POST':
@@ -66,9 +56,7 @@ def detailView(request, slug, pk):
         'form_detail':comment_form,
         'detail_graph_label':json.dumps(graph_label),
         'detail_graph_value':json.dumps(graph_value),
-        'json_data':json.dumps(my_dict),
-        'my_row':my_rows,
-        'my_column':my_columns
+        'data':json_table
     }
     return render(request, 'detail.html', context)
 
